@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavora - Our Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 700;
+        }
+
+        h2 .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .staff-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .staff-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .staff-card h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-card .position {
+            color: #764ba2;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .staff-card p {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Flavora</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/staff">Our Team</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="staff">
+        <div class="container">
+            <h2>Meet Our <span class="highlight">Team</span></h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍🍳</div>
+                    <h3>Chef Michael Anderson</h3>
+                    <p class="position">Executive Chef</p>
+                    <p>With 20+ years of culinary excellence, Chef Michael brings creativity and passion to every dish.
+                        Trained in Paris and New York.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍🍳</div>
+                    <h3>Chef Sarah Chen</h3>
+                    <p class="position">Head Pastry Chef</p>
+                    <p>Award-winning pastry chef specializing in fusion desserts. Graduate of Le Cordon Bleu with 15
+                        years experience.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍💼</div>
+                    <h3>David Martinez</h3>
+                    <p class="position">Restaurant Manager</p>
+                    <p>Ensuring exceptional service and memorable experiences for every guest. 12 years in hospitality
+                        management.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍🍳</div>
+                    <h3>Chef Priya Sharma</h3>
+                    <p class="position">Sous Chef</p>
+                    <p>Specializes in Indian and Mediterranean cuisine. Brings authentic flavors with a modern twist to
+                        our menu.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">🍷</div>
+                    <h3>James Wilson</h3>
+                    <p class="position">Master Sommelier</p>
+                    <p>Certified sommelier with extensive knowledge of wines from around the world. Perfect pairings
+                        guaranteed.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍🍳</div>
+                    <h3>Chef Marco Rossi</h3>
+                    <p class="position">Grill Master</p>
+                    <p>Italian cuisine expert with mastery in wood-fired cooking. Creates perfectly grilled
+                        masterpieces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

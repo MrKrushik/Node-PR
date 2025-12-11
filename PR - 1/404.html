@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>404 — Lost in Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ---------- Root & Reset ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg-1: #070712;
+            --bg-2: #0f1020;
+            --neon-1: #7afcff;
+            --neon-2: #ff6fb5;
+            --accent: #9b8cff;
+            --muted: #9aa3b2;
+            --glass: rgba(255, 255, 255, 0.04);
+            --glass-2: rgba(255, 255, 255, 0.03);
+            --shadow: 0 20px 50px rgba(2, 6, 23, 0.6);
+            --soft: 0.25s cubic-bezier(.2, .9, .3, 1);
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(122, 255, 255, 0.03), transparent),
+                radial-gradient(900px 500px at 90% 90%, rgba(255, 111, 181, 0.03), transparent),
+                linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            color: #e6eef8;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* ---------- Layout ---------- */
+        .stage {
+            width: 100%;
+            max-width: 1100px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            display: grid;
+            grid-template-columns: 1fr 460px;
+            gap: 2rem;
+            padding: 2.2rem;
+        }
+
+        /* ---------- Left: Message ---------- */
+        .left {
+            padding: 1rem 1.5rem;
+            align-self: center;
+        }
+
+        .kicker {
+            display: inline-block;
+            font-weight: 700;
+            color: var(--neon-1);
+            background: linear-gradient(90deg, rgba(122, 252, 255, 0.06), rgba(255, 111, 181, 0.03));
+            padding: .35rem .75rem;
+            border-radius: 999px;
+            letter-spacing: 0.6px;
+            margin-bottom: 1rem;
+            font-size: .85rem;
+        }
+
+        h1.title {
+            font-size: clamp(1.8rem, 3.4vw, 3rem);
+            margin: .6rem 0 1rem;
+            line-height: 1.02;
+            color: transparent;
+            background: linear-gradient(90deg, var(--neon-1), var(--neon-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: 900;
+            text-shadow: 0 6px 24px rgba(123, 255, 255, 0.06);
+        }
+
+        p.lead {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 44ch;
+            margin-bottom: 1.6rem;
+            line-height: 1.6;
+        }
+
+        /* ---------- Search ---------- */
+        .search-row {
+            display: flex;
+            gap: .75rem;
+            max-width: 640px;
+            margin-bottom: 1.5rem
+        }
+
+        .search {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--glass);
+            border-radius: 999px;
+            padding: .45rem .6rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: box-shadow var(--soft), transform var(--soft);
+        }
+
+        .search input {
+            background: transparent;
+            border: 0;
+            outline: none;
+            color: inherit;
+            padding: .6rem .4rem;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .search .icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(90deg, var(--neon-1), transparent);
+            color: #031014;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(122, 255, 255, 0.06);
+        }
+
+        .search button {
+            background: linear-gradient(90deg, var(--neon-2), var(--neon-1));
+            border: 0;
+            padding: .55rem 1rem;
+            border-radius: 999px;
+            color: #081018;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 111, 181, 0.08);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .search button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(255, 111, 181, 0.12)
+        }
+
+        /* ---------- Actions ---------- */
+        .actions {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            padding: .7rem 1.2rem;
+            border-radius: 12px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+            cursor: pointer;
+            font-weight: 700;
+            backdrop-filter: blur(6px);
+            transition: all .22s cubic-bezier(.2, .9, .3, 1);
+        }
+
+        .btn.primary {
+            background: linear-gradient(90deg, rgba(122, 255, 255, 0.08), rgba(255, 111, 181, 0.06));
+            color: #001219;
+            border: 1px solid rgba(122, 255, 255, 0.15);
+            padding: .7rem 1.4rem;
+            border-radius: 999px;
+            box-shadow: 0 10px 30px rgba(122, 255, 255, 0.06);
+        }
+
+        .btn:hover {
+            transform: translateY(-6px)
+        }
+
+        .btn.glow {
+            box-shadow: 0 10px 40px rgba(155, 140, 255, 0.12);
+            border: 1px solid rgba(155, 140, 255, 0.18);
+            color: var(--neon-1)
+        }
+
+        .small-muted {
+            font-size: .88rem;
+            color: var(--muted);
+            margin-top: .75rem
+        }
+
+        /* ---------- Right: Visual Astronaut ---------- */
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 1rem;
+        }
+
+        .portal {
+            width: 380px;
+            height: 420px;
+            border-radius: 24px;
+            background:
+                radial-gradient(50% 50% at 30% 20%, rgba(122, 255, 255, 0.06), transparent 20%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: grid;
+            place-items: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .portal .glow-ring {
+            position: absolute;
+            width: 540px;
+            height: 540px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.04);
+            top: -80px;
+            left: -80px;
+            filter: blur(40px);
+            opacity: .45;
+            transform: rotate(18deg);
+            animation: spinSlow 20s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* astronaut graphic (simple) */
+        .astro {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #071428 0%, #12314a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(13, 18, 30, 0.6);
+            transition: transform .6s cubic-bezier(.2, .9, .3, 1);
+            transform-origin: center;
+        }
+
+        .astro:hover {
+            transform: translateY(-10px) rotate(-3deg) scale(1.03)
+        }
+
+        .visor {
+            width: 160px;
+            height: 120px;
+            border-radius: 40px;
+            background: linear-gradient(180deg, rgba(122, 255, 255, 0.28), rgba(18, 49, 74, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(122, 255, 255, 0.06), inset 0 -8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .visor .shine {
+            position: absolute;
+            left: -20%;
+            top: -40%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+            transform: rotate(25deg);
+            animation: visorShine 3.5s linear infinite;
+        }
+
+        @keyframes visorShine {
+            0% {
+                transform: translateX(-100%) rotate(25deg)
+            }
+
+            100% {
+                transform: translateX(100%) rotate(25deg)
+            }
+        }
+
+        /* small thruster glows */
+        .thrusters {
+            position: absolute;
+            bottom: -26px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .thrusters .fire {
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            background: radial-gradient(circle, var(--neon-2), transparent);
+            opacity: .8;
+            filter: blur(8px);
+            animation: thrust 1s infinite;
+        }
+
+        .thrusters .fire:nth-child(2) {
+            animation-delay: .15s
+        }
+
+        .thrusters .fire:nth-child(3) {
+            animation-delay: .25s
+        }
+
+        @keyframes thrust {
+            0% {
+                transform: scale(.6)
+            }
+
+            50% {
+                transform: scale(1.2)
+            }
+
+            100% {
+                transform: scale(.6)
+            }
+        }
+
+        /* ---------- Background decorative matrix numbers (subtle) ---------- */
+        .matrix {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            opacity: 0.06;
+            font-weight: 900;
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 6px;
+            display: grid;
+            grid-template-columns: repeat(14, 1fr);
+            gap: 0;
+            padding: 1.5rem;
+        }
+
+        .matrix span {
+            display: block;
+            color: var(--neon-1);
+            transform: translateY(0);
+            opacity: 0.06
+        }
+
+        /* ---------- Footer status/time ---------- */
+        .status {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 12px;
+            font-size: .9rem;
+            color: var(--muted);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent);
+            padding: .45rem .8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.02)
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width:980px) {
+            .stage {
+                grid-template-columns: 1fr;
+                padding: 1.25rem
+            }
+
+            .right {
+                order: -1;
+                margin-bottom: 0
+            }
+
+            .portal {
+                width: 320px;
+                height: 320px
+            }
+        }
+
+        @media (max-width:480px) {
+            .portal {
+                width: 260px;
+                height: 260px
+            }
+
+            .matrix {
+                display: none
+            }
+
+            .search-row {
+                flex-direction: column
+            }
+
+            .search button {
+                width: 100%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage" role="main" aria-labelledby="title-404">
+        <!-- Left -->
+        <div class="left">
+            <div class="kicker">Lost Node • 404</div>
+            <h1 id="title-404" class="title">Where did that page go?</h1>
+            <p class="lead">Looks like the link took a detour into the void. We scanned the quadrant — nothing. Try
+                searching, teleporting home, or let Nexus surprise you with a random destination.</p>
+
+            <div class="search-row" aria-hidden="false">
+                <div class="search" title="search">
+                    <div class="icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <input id="searchInput" type="text" placeholder="Try keywords like: menu, gallery, contact..."
+                        aria-label="Search site">
+                </div>
+                <button id="searchBtn" class="btn primary"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</button>
+            </div>
+
+            <div class="actions">
+                <a href="/" class="btn glow primary" title="Go Home"><i class="fas fa-home"></i>&nbsp;Back to
+                    Home</a>
+                <button id="randomBtn" class="btn" title="Explore Random"><i class="fas fa-compass"></i>&nbsp;Explore
+                    Random</button>
+                <a href="/contact" class="btn" title="Contact Support"><i class="fas fa-headset"></i>&nbsp;Contact</a>
+            </div>
+
+            <div class="small-muted">Tip: Press <strong>Space</strong> for particle burst • Press <strong>Esc</strong>
+                to go home</div>
+        </div>
+
+        <!-- Right -->
+        <div class="right" aria-hidden="true">
+            <div class="portal" role="img" aria-label="portal visual">
+                <div class="glow-ring"></div>
+
+                <div class="astro" id="astro">
+                    <div class="visor" aria-hidden="true">
+                        <div class="shine"></div>
+                        <!-- subtle planet reflection inside visor -->
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="opacity:.95">
+                            <defs>
+                                <linearGradient id="g" x1="0" x2="1">
+                                    <stop offset="0" stop-color="#7afcff" />
+                                    <stop offset="1" stop-color="#ff6fb5" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="32" cy="28" r="16" stroke="url(#g)" stroke-width="3"
+                                fill="rgba(255,255,255,0.02)" />
+                            <path d="M10 48c8-10 20-12 32-9" stroke="rgba(255,255,255,0.06)" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div class="thrusters" aria-hidden="true">
+                        <div class="fire"></div>
+                        <div class="fire"></div>
+                        <div class="fire"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- subtle matrix numbers -->
+        <div class="matrix" aria-hidden="true">
+            <!-- generate columns of digits for aesthetic -->
+            <span>1 0 1</span><span>0 4 4</span><span>1 1 0</span><span>4 0 4</span><span>0 1 0</span>
+            <span>1 0 0</span><span>4 0 1</span><span>0 1 4</span><span>1 4 0</span><span>0 0 1</span>
+            <span>4 1 0</span><span>0 4 1</span><span>1 0 4</span><span>4 0 0</span>
+        </div>
+
+        <!-- status / time -->
+        <div class="status" aria-hidden="false">
+            <div><i class="fas fa-satellite"></i>&nbsp;&nbsp;<span id="conn">Connection: Stable</span></div>
+            <div><i class="fas fa-clock"></i>&nbsp;&nbsp;<span id="timeNow">--:--:--</span></div>
+            <div><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;<span>Location: Nexus</span></div>
+        </div>
+
+    </div>
+
+    <!-- loading ring (center overlay) -->
+    <div id="loading"
+        style="position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity .3s">
+        <div
+            style="width:120px;height:120px;border-radius:50%;border:8px solid rgba(255,255,255,0.03);border-top-color:rgba(122,255,255,0.9);border-right-color:rgba(255,111,181,0.9);animation:spin 1.3s linear infinite;box-shadow:0 10px 40px rgba(122,255,255,0.08)">
+        </div>
+    </div>
+
+    <script>
+        // --- helpers ---
+        const loading = document.getElementById('loading');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const timeNow = document.getElementById('timeNow');
+
+        function showLoading(ms = 800) {
+            loading.style.opacity = '1';
+            setTimeout(() => loading.style.opacity = '0', ms);
+        }
+
+        // time
+        function updateTime() {
+            const d = new Date();
+            timeNow.textContent = d.toLocaleTimeString('en-US', { hour12: false });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // search (demo)
+        function doSearch() {
+            const q = searchInput.value.trim();
+            if (!q) { searchInput.focus(); return; }
+            showLoading(1000);
+            setTimeout(() => alert('Search demo — you searched for: ' + q), 900);
+        }
+        searchBtn.addEventListener('click', doSearch);
+        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') doSearch(); });
+
+        // random explore
+        randomBtn.addEventListener('click', () => {
+            showLoading(900);
+            const pages = ['index.html', 'menu.html', 'gallery.html', 'contact.html', 'blog.html'];
+            const p = pages[Math.floor(Math.random() * pages.length)];
+            setTimeout(() => location.href = p, 900);
+        });
+
+        // keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') location.href = 'index.html';
+            if (e.key === ' ') {
+                // particle burst (create small dots)
+                for (let i = 0; i < 16; i++) createBurst();
+            }
+        });
+
+        // particle burst
+        function createBurst() {
+            const dot = document.createElement('div');
+            const size = Math.random() * 8 + 6;
+            dot.style.cssText = `
+        position:fixed;
+        left:50%;
+        top:42%;
+        width:${size}px;height:${size}px;border-radius:50%;
+        background: ${Math.random() > 0.5 ? 'radial-gradient(circle,#7afcff,transparent)' : 'radial-gradient(circle,#ff6fb5,transparent)'};
+        pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+      `;
+            document.body.appendChild(dot);
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * 220 + 80;
+            dot.animate([
+                { transform: 'translate(-50%,-50%) translate(0,0) scale(1)', opacity: 1 },
+                { transform: `translate(-50%,-50%) translate(${Math.cos(angle) * dist}px,${Math.sin(angle) * dist}px) scale(0.2)`, opacity: 0 }
+            ], { duration: 900, easing: 'cubic-bezier(.2,.9,.3,1)' });
+            setTimeout(() => dot.remove(), 950);
+        }
+
+        // small hover jiggle on astro
+        const astro = document.getElementById('astro');
+        astro.addEventListener('mousemove', (e) => {
+            const rX = (e.offsetY - astro.clientHeight / 2) / 20;
+            const rY = (e.offsetX - astro.clientWidth / 2) / 20;
+            astro.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg) translateZ(0) scale(1.02)`;
+        });
+        astro.addEventListener('mouseleave', () => astro.style.transform = '');
+
+        // small subtle animation to matrix (fade in)
+        document.addEventListener('DOMContentLoaded', () => {
+            const matrix = document.querySelectorAll('.matrix span');
+            matrix.forEach((s, i) => s.style.opacity = (0.02 + Math.random() * 0.04));
+        });
+
+        // spin keyframes (local)
+        (function addSpinKeyframe() {
+            const s = document.createElement('style');
+            s.textContent = `@keyframes spin {0%{transform:rotate(0)}100%{transform:rotate(360deg)}}`;
+            document.head.appendChild(s);
+        })();
+
+    </script>
+</body>
+
+</html>

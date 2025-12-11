@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavora - About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 700;
+        }
+
+        h2 .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            color: #2c3e50;
+        }
+
+        .about-text h3 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 550px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Flavora</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/staff">Our Team</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About <span class="highlight">Flavora</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Welcome to Flavora, where culinary artistry meets warm hospitality. Since 2010, we've been
+                        crafting exceptional dining experiences that celebrate fresh ingredients and innovative flavors.
+                    </p>
+                    <br>
+                    <p>Founded by Chef Michael Anderson, Flavora started as a small family-owned restaurant with a dream
+                        to bring gourmet dining to the heart of Surat. Today, we're proud to serve over 500 guests
+                        daily, maintaining the same commitment to quality and excellence that started it all.</p>
+                    <br>
+                    <p>Our talented chefs blend traditional techniques with modern creativity to bring you dishes that
+                        not only taste amazing but look stunning too. Every plate is a masterpiece, crafted with
+                        locally-sourced ingredients and international spices.</p>
+                    <br>
+                    <p>We believe in sustainability, quality, and making every guest feel like family. Our restaurant
+                        features an open kitchen concept where you can watch our chefs in action, creating culinary
+                        magic right before your eyes.</p>
+                    <br>
+                    <p>Join us for an unforgettable dining journey that engages all your senses!</p>
+                </div>
+                <div class="about-image">
+                    👨‍🍳
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

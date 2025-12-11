@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavora - Fine Dining Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #fafafa;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 7rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s;
+            color: #2c3e50;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s 0.2s backwards;
+            color: #34495e;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.8rem 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 5rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 700;
+        }
+
+        h2 .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu Section */
+        #menu {
+            background: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 30%, #ffecd2 100%);
+            padding: 3.5rem;
+            border-radius: 25px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .menu-item .icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .menu-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .menu-item .price {
+            color: #764ba2;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 1.2rem 0;
+            display: block;
+        }
+
+        .menu-item p {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.4rem;
+            line-height: 2.2;
+            color: #2c3e50;
+        }
+
+        .about-text h3 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 550px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            height: 400px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            color: #34495e;
+            font-size: 1rem;
+        }
+
+        /* Staff Section */
+        .staff {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .staff-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .staff-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .staff-card h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-card .position {
+            color: #764ba2;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .staff-card p {
+            color: #34495e;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #34495e;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            padding: 4rem 2.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .contact-item .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .contact-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-item p {
+            color: #34495e;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .menu-item .icon,
+            .gallery-item {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Flavora</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/staff">Our Team</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Flavora Restaurant</h1>
+            <p>Where Every Meal Tells a Story</p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2>Our <span class="highlight">Signature Dishes</span></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span class="icon">🍝</span>
+                    <h3>Creamy Pasta Deluxe</h3>
+                    <span class="price">$18.99</span>
+                    <p>Fresh pasta tossed in rich creamy sauce with herbs and parmesan</p>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍔</span>
+                    <h3>Gourmet Burger</h3>
+                    <span class="price">$15.99</span>
+                    <p>Juicy beef patty with caramelized onions, cheese & special sauce</p>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍕</span>
+                    <h3>Wood-Fired Pizza</h3>
+                    <span class="price">$16.99</span>
+                    <p>Thin crust pizza with fresh mozzarella and basil from our oven</p>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🥗</span>
+                    <h3>Mediterranean Salad</h3>
+                    <span class="price">$12.99</span>
+                    <p>Fresh greens with feta, olives, tomatoes & olive oil dressing</p>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍤</span>
+                    <h3>Grilled Seafood Platter</h3>
+                    <span class="price">$24.99</span>
+                    <p>Assorted seafood grilled to perfection with lemon butter sauce</p>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍰</span>
+                    <h3>Chocolate Lava Cake</h3>
+                    <span class="price">$8.99</span>
+                    <p>Warm chocolate cake with molten center, served with ice cream</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About <span class="highlight">Flavora</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Welcome to Flavora, where culinary artistry meets warm hospitality. Since 2010, we've been
+                        crafting exceptional dining experiences that celebrate fresh ingredients and innovative flavors.
+                    </p>
+                    <br>
+                    <p>Founded by Chef Michael Anderson, Flavora started as a small family-owned restaurant with a dream
+                        to bring gourmet dining to the heart of Surat. Today, we're proud to serve over 500 guests
+                        daily, maintaining the same commitment to quality and excellence that started it all.</p>
+                    <br>
+                    <p>Our talented chefs blend traditional techniques with modern creativity to bring you dishes that
+                        not only taste amazing but look stunning too. Every plate is a masterpiece, crafted with
+                        locally-sourced ingredients and international spices.</p>
+                    <br>
+                    <p>We believe in sustainability, quality, and making every guest feel like family. Our restaurant
+                        features an open kitchen concept where you can watch our chefs in action, creating culinary
+                        magic right before your eyes.</p>
+                    <br>
+                    <p>Join us for an unforgettable dining journey that engages all your senses!</p>
+                </div>
+                <div class="about-image">
+                    👨‍🍳
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose <span class="highlight">Flavora</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Premium Quality</h3>
+                    <p>We source only the finest ingredients from local farms and international suppliers to ensure
+                        every dish is exceptional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Expert Chefs</h3>
+                    <p>Our award-winning chefs have trained at world-renowned culinary institutes and bring decades of
+                        experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Fresh & Organic</h3>
+                    <p>We prioritize organic, farm-fresh produce and sustainable sourcing practices for a healthier,
+                        tastier experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Artistic Presentation</h3>
+                    <p>Every dish is a visual masterpiece, carefully plated to delight your eyes before tantalizing your
+                        taste buds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Award Winning</h3>
+                    <p>Recognized with multiple culinary awards including "Best Restaurant 2023" and "Chef's Choice
+                        Award 2022".</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💝</div>
+                    <h3>Perfect Ambiance</h3>
+                    <p>Elegant interiors, soft lighting, and comfortable seating create the perfect atmosphere for any
+                        occasion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Restaurant <span class="highlight">Gallery</span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">🍽️</span>
+                    <div class="gallery-caption">
+                        <h4>Elegant Dining Area</h4>
+                        <p>Spacious seating with modern decor</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">🕯️</span>
+                    <div class="gallery-caption">
+                        <h4>Romantic Ambiance</h4>
+                        <p>Perfect for special occasions</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">👨‍🍳</span>
+                    <div class="gallery-caption">
+                        <h4>Open Kitchen</h4>
+                        <p>Watch our chefs create magic</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">🥂</span>
+                    <div class="gallery-caption">
+                        <h4>Premium Bar</h4>
+                        <p>Extensive wine & cocktail selection</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">🌿</span>
+                    <div class="gallery-caption">
+                        <h4>Garden Seating</h4>
+                        <p>Outdoor dining under the stars</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <span style="font-size: 8rem;">🎵</span>
+                    <div class="gallery-caption">
+                        <h4>Live Music</h4>
+                        <p>Entertainment on weekends</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="staff">
+        <div class="container">
+            <h2>Meet Our <span class="highlight">Team</span></h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍🍳</div>
+                    <h3>Chef Michael Anderson</h3>
+                    <p class="position">Executive Chef</p>
+                    <p>With 20+ years of culinary excellence, Chef Michael brings creativity and passion to every dish.
+                        Trained in Paris and New York.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍🍳</div>
+                    <h3>Chef Sarah Chen</h3>
+                    <p class="position">Head Pastry Chef</p>
+                    <p>Award-winning pastry chef specializing in fusion desserts. Graduate of Le Cordon Bleu with 15
+                        years experience.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍💼</div>
+                    <h3>David Martinez</h3>
+                    <p class="position">Restaurant Manager</p>
+                    <p>Ensuring exceptional service and memorable experiences for every guest. 12 years in hospitality
+                        management.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍🍳</div>
+                    <h3>Chef Priya Sharma</h3>
+                    <p class="position">Sous Chef</p>
+                    <p>Specializes in Indian and Mediterranean cuisine. Brings authentic flavors with a modern twist to
+                        our menu.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">🍷</div>
+                    <h3>James Wilson</h3>
+                    <p class="position">Master Sommelier</p>
+                    <p>Certified sommelier with extensive knowledge of wines from around the world. Perfect pairings
+                        guaranteed.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍🍳</div>
+                    <h3>Chef Marco Rossi</h3>
+                    <p class="position">Grill Master</p>
+                    <p>Italian cuisine expert with mastery in wood-fired cooking. Creates perfectly grilled
+                        masterpieces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Visit <span class="highlight">Us Today</span></h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <h3>Location</h3>
+                    <p>123 Culinary Avenue<br>Surat, Gujarat<br>India</p>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <h3>Call Us</h3>
+                    <p>+91 98765 43210<br>+91 98765 43211</p>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">⏰</span>
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Sunday<br>11:00 AM - 11:00 PM</p>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <h3>Email</h3>
+                    <p>hello@flavora.com<br>reservations@flavora.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Flavora Restaurant. All Rights Reserved. Crafted with passion in Surat.</p>
+    </footer>
+</body>
+
+</html>
