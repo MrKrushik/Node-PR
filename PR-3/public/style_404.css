@@ -1,0 +1,72 @@
+/*======================
+    404 Page Responsive
+=======================*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arvo', serif;
+    background: #fff;
+}
+
+.page_404 {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.four_zero_four_bg {
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 50vh;
+    /* Laptop + Desktop perfect */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.four_zero_four_bg h1 {
+    font-size: 8vw;
+    /* Auto adjust for laptop + mobile */
+    margin: 0;
+}
+
+.contant_box_404 {
+    margin-top: -30px;
+}
+
+.contant_box_404 h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.contant_box_404 p {
+    font-size: 1.1rem;
+}
+
+.link_404 {
+    color: #fff !important;
+    padding: 12px 30px;
+    background: #39ac31;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/*======================
+    Mobile Responsive
+=======================*/
+
+@media (max-width: 768px) {
+    .four_zero_four_bg {
+        height: 40vh;
+    }
+
+    .four_zero_four_bg h1 {
+        font-size: 14vw;
+    }
+
+    .contant_box_404 {
+        margin-top: -10px;
+    }
+}
