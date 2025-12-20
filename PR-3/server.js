@@ -8,15 +8,15 @@ const app = express();
 app.set('view engine', 'ejs');
 
 console.log(__dirname);
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public")); // attach static files
 
-// Middleware
+// Middleware function
 const middleware = (req, res, next) => {
     console.log("Middleware ");
 
-        fs.appendFile('./log.txt', `\n${Date()} IP ADDRESS : ${req.ip}`, (err) => {
+    fs.appendFile('./log.txt', `\n${Date()} IP ADDRESS : ${req.ip}`, (err) => {
         if (err) {
-            console.log(err);   
+            console.log(err);
         }
     });
 
@@ -36,7 +36,7 @@ app.use(middleware);
 app.get('/', (req, res) => {
     return res.render('index');
 });
-    
+
 app.listen(PORT, (err) => {
     if (err) {
         console.log("Server not started...😒😒", err);

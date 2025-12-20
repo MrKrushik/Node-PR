@@ -1,326 +1,435 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Video - Watch Movies & Series</title>
+    <title>My Creative Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-logo">
-            ▶ PRIME
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#trending">Movies</a></li>
-            <li><a href="#popular">TV Shows</a></li>
-            <li><a href="#categories">My Stuff</a></li>
-        </ul>
-        <input type="text" class="search-box" placeholder="Search movies, shows...">
-    </nav>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">YourName</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Hero Banner -->
-    <div class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="particles">
+            <div class="particle" style="left: 10%; width: 10px; height: 10px; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; width: 15px; height: 15px; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; width: 8px; height: 8px; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; width: 10px; height: 10px; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; width: 14px; height: 14px; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; width: 9px; height: 9px; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; width: 11px; height: 11px; animation-delay: 4.5s;"></div>
+            <div class="particle" style="left: 90%; width: 13px; height: 13px; animation-delay: 1.5s;"></div>
+        </div>
         <div class="hero-content">
-            <h1>Avatar: The Way of Water</h1>
-            <p>Immerse yourself in a breathtaking world of wonder. Experience the epic sequel that takes you beyond the boundaries of imagination to the stunning underwater realm of Pandora.</p>
+            <div class="hero-subtitle">👋 Hello, Main Hoon</div>
+            <h1>Creative Designer & Developer</h1>
+            <p>Main beautiful digital experiences create karta hoon jo brands ko standout banati hain</p>
             <div class="hero-buttons">
-                <button class="btn-primary">▶ Watch Now</button>
-                <button class="btn-secondary">+ Add to Watchlist</button>
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Movie Sections -->
-    <div class="categories">
-        <!-- Trending Section -->
-        <div class="category">
-            <h2 class="section-heading" id="trending">🔥 Trending Now</h2>
-            <div class="movies-container">
-                <div class="movies-grid">
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop" alt="Avatar" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Avatar 3</h3>
-                            <p>Sci-Fi, Adventure</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★★</span> 9.0</div>
+    <!-- Stats Counter Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3><span class="counter" data-target="150">0</span>+</h3>
+                <p>Projects Done</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="counter" data-target="50">0</span>+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="counter" data-target="5">0</span>+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="counter" data-target="25">0</span>+</h3>
+                <p>Awards Won</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <div class="image-placeholder">👨‍💻</div>
+            </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Main ek passionate designer aur developer hoon jo 5+ years se digital industry mein kaam kar raha
+                    hoon. Mera focus hai unique aur impactful designs create karna jo businesses ko grow karne mein help
+                    karein.</p>
+                <p>Mere expertise hai modern web technologies, UI/UX design, aur creative problem-solving. Main har
+                    project ko ek opportunity ki tarah dekhta hoon kuch extraordinary create karne ka.</p>
+                <div class="skills">
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">Graphic Design</span>
+                    <span class="skill-tag">Branding</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Adobe Creative Suite</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>My Portfolio</h2>
+            <p>Kuch recent projects jinpe maine kaam kiya hai</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎨</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Web Design</div>
+                    <h3>E-Commerce Platform</h3>
+                    <p>Modern online store ke liye complete UI/UX design aur development with seamless shopping
+                        experience</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">📱</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Mobile App</div>
+                    <h3>Fitness Tracking App</h3>
+                    <p>Health conscious users ke liye intuitive mobile app design with activity tracking features</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎯</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Branding</div>
+                    <h3>Brand Identity Design</h3>
+                    <p>Complete brand identity design including logo, color palette, aur marketing materials</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">💼</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Web Development</div>
+                    <h3>Corporate Website</h3>
+                    <p>Professional corporate website with modern design aur seamless user experience</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎪</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">UI Design</div>
+                    <h3>Event Management Dashboard</h3>
+                    <p>Comprehensive dashboard design for event organizers with analytics aur management tools</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">🚀</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Landing Page</div>
+                    <h3>SaaS Product Launch</h3>
+                    <p>High-converting landing page design for tech startup product launch campaign</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>What Clients Say</h2>
+            <p>Reviews from amazing people I've worked with</p>
+        </div>
+        <div class="testimonial-slider">
+            <div class="testimonial-card active" data-index="0">
+                <p class="testimonial-text">"Outstanding work! The attention to detail aur creativity jo isne dikhaya,
+                    that's truly impressive. Highly recommended for anyone looking for quality design work."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨</div>
+                    <div class="author-info">
+                        <h4>Rahul Sharma</h4>
+                        <p>CEO, Tech Solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card" data-index="1">
+                <p class="testimonial-text">"Working with this designer was an absolute pleasure. Professional,
+                    creative, aur deadline ka perfect follow-through. Our website ab bohot amazing lag rahi hai!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩</div>
+                    <div class="author-info">
+                        <h4>Priya Patel</h4>
+                        <p>Founder, Fashion Brand</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card" data-index="2">
+                <p class="testimonial-text">"Exceptional talent! The design exceeded our expectations. Communication was
+                    clear throughout the project aur delivery was right on time. Would definitely work again!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨</div>
+                    <div class="author-info">
+                        <h4>Amit Kumar</h4>
+                        <p>Marketing Director, StartupHub</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" onclick="showTestimonial(0)"></span>
+                <span class="dot" onclick="showTestimonial(1)"></span>
+                <span class="dot" onclick="showTestimonial(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="section-header">
+            <h2>My Journey</h2>
+            <p>Professional experience aur achievements</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3>Senior UI/UX Designer</h3>
+                    <h4>Tech Innovations Inc.</h4>
+                    <p>Leading design team aur creating innovative digital experiences for enterprise clients.
+                        Responsible for design strategy aur team mentorship.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <h3>Product Designer</h3>
+                    <h4>Digital Solutions Ltd.</h4>
+                    <p>Designed user-centric interfaces for web aur mobile applications. Collaborated with developers
+                        aur stakeholders to deliver successful products.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <h3>Junior Designer</h3>
+                    <h4>Creative Studio</h4>
+                    <p>Started career as junior designer, working on various client projects aur learning industry best
+                        practices.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2018</div>
+                    <h3>Freelance Designer</h3>
+                    <h4>Self-Employed</h4>
+                    <p>Began freelancing journey, working with small businesses aur startups to build their digital
+                        presence.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Work Together</h2>
+                <p>Agar aapko kisi project ke liye help chahiye ya bas coffee pe baat karni hai, feel free to reach out!
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <p>your.email@example.com</p>
                         </div>
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400&h=600&fit=crop" alt="Action Movie" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Mission Impossible</h3>
-                            <p>Action, Thriller</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.5</div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-item-text">
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
                         </div>
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1547691889-acb177434c12?w=400&h=600&fit=crop" alt="Sci-Fi Movie" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Dune: Part Two</h3>
-                            <p>Sci-Fi, Drama</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★★</span> 8.8</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1535016120754-fd45c1d54fce?w=400&h=600&fit=crop" alt="Fantasy Movie" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Oppenheimer</h3>
-                            <p>Drama, History</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★★</span> 9.2</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1557804506-669714d2e745?w=400&h=600&fit=crop" alt="Drama Movie" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>The Zone of Interest</h3>
-                            <p>Drama, Thriller</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.3</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1566015593282-f3bada587a5f?w=400&h=600&fit=crop" alt="Crime Movie" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Killers of Flower Moon</h3>
-                            <p>Crime, Drama</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.6</div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h4>Location</h4>
+                            <p>Mumbai, India</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Popular Section -->
-        <div class="category">
-            <h2 class="section-heading" id="popular">⭐ Most Popular</h2>
-            <div class="movies-container">
-                <div class="movies-grid">
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1594908900073-a18ffc564c43?w=400&h=600&fit=crop" alt="Superhero" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>The Marvels</h3>
-                            <p>Action, Superhero</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.1</div>
-                        </div>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1578375136339-122fa577ffd7?w=400&h=600&fit=crop" alt="Animation" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>The Boy and the Heron</h3>
-                            <p>Animation, Fantasy</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★★</span> 8.9</div>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1595768541624-c5e0b06033da?w=400&h=600&fit=crop" alt="Horror" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>A Haunting in Venice</h3>
-                            <p>Mystery, Thriller</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.9</div>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=600&fit=crop" alt="Romance" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Past Lives</h3>
-                            <p>Drama, Romance</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.2</div>
-                        </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
                     </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1618519267610-1f7eb5a313d6?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Poor Things</h3>
-                            <p>Comedy, Drama</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.0</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7a89?w=400&h=600&fit=crop" alt="Adventure" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Barbie</h3>
-                            <p>Comedy, Adventure</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.4</div>
-                        </div>
-                    </div>
-                </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
         </div>
-
-        <!-- Action Section -->
-        <div class="category">
-            <h2 class="section-heading">💥 Action & Adventure</h2>
-            <div class="movies-container">
-                <div class="movies-grid">
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop" alt="Superhero Action" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Aquaman 2</h3>
-                            <p>Action, Adventure</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.3</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop" alt="Sci-Fi Action" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>The Flash</h3>
-                            <p>Action, Sci-Fi</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.2</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400&h=600&fit=crop" alt="Spy Action" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Fast X</h3>
-                            <p>Action, Thriller</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.0</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1607756238258-20ab59fdbf37?w=400&h=600&fit=crop" alt="War Action" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Kandahar</h3>
-                            <p>Action, Thriller</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.8</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1596551183359-ef69f373b5dc?w=400&h=600&fit=crop" alt="Adventure" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Spider-Man Beyond</h3>
-                            <p>Action, Adventure</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★★</span> 8.7</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1533635903356-c5b8af11bdb3?w=400&h=600&fit=crop" alt="Action" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Dungeons & Dragons</h3>
-                            <p>Action, Fantasy</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.5</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Comedy Section -->
-        <div class="category">
-            <h2 class="section-heading">😂 Comedy & Entertainment</h2>
-            <div class="movies-container">
-                <div class="movies-grid">
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1581822261290-991b38693d1b?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Hal</h3>
-                            <p>Comedy, Drama</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.6</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1594908900068-14ae92d2a6e4?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Expend4bles</h3>
-                            <p>Action, Comedy</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★☆☆</span> 7.2</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Funny Face</h3>
-                            <p>Comedy, Romance</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.8</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>The Shift</h3>
-                            <p>Comedy, Mystery</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.9</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7a89?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Night Monkey</h3>
-                            <p>Comedy, Action</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 8.0</div>
-                        </div>
-                    </div>
-
-                    <div class="movie-card">
-                        <img src="https://images.unsplash.com/photo-1478720568477-152d9e3287b0?w=400&h=600&fit=crop" alt="Comedy" class="movie-card-image">
-                        <div class="movie-overlay">
-                            <h3>Laugh Tracks</h3>
-                            <p>Comedy, Family</p>
-                            <div class="movie-rating"><span class="movie-rating-star">★★★★☆</span> 7.5</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Get Help</h4>
-                <a href="#">Contact Us</a>
-                <a href="#">Your Account</a>
-                <a href="#">Prime Video Settings</a>
-                <a href="#">Help</a>
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">📸</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">🎨</a>
             </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <a href="#">About Amazon</a>
-                <a href="#">Press Center</a>
-                <a href="#">Amazon Store</a>
-                <a href="#">Careers</a>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="#">Conditions of Use</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Cookies Notice</a>
-                <a href="#">Interest-Based Ads</a>
-            </div>
-            <div class="footer-section">
-                <h4>Follow Prime Video</h4>
-                <div class="social-icons">
-                    <a href="#">f</a>
-                    <a href="#">𝕏</a>
-                    <a href="#">in</a>
-                    <a href="#">▶</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Amazon Prime Video. All rights reserved. | Terms • Privacy • Cookies • Ads Choices</p>
+            <p>&copy; 2024 Your Name. Crafted with ❤️ in India</p>
         </div>
     </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! Main jaldi hi aapse contact karunga.');
+            e.target.reset();
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 15, 0.95)';
+            }
+        });
+
+        // Portfolio items hover effect
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        portfolioItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounter(counter), 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const countersInView = entry.target.querySelectorAll('.counter');
+                    countersInView.forEach(counter => {
+                        counter.innerText = '0';
+                        animateCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Testimonial Slider
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            const cards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.dot');
+
+            cards.forEach(card => card.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            cards[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % 3;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Skill tags hover effect
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    tag.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
 </body>
+
 </html>
