@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in Space</title>
+    <link rel="stylesheet" href="404.css">
+
+</head>
+
+
+<body>
+    
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- Glow Effects -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+        
+
+    <!-- Main Content -->
+    <div class="container">
+      
+            
+
+        <div class="error-code">404</div>
+
+        <div class="spaceman">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head -->
+                <circle cx="50" cy="30" r="15" fill="#ff006e" opacity="0.8" />
+                <!-- Helmet -->
+                <circle cx="50" cy="30" r="18" fill="none" stroke="#3a86ff" stroke-width="2" />
+                <!-- Body -->
+                <rect x="40" y="48" width="20" height="25" fill="#8338ec" rx="3" />
+                <!-- Arms -->
+                <rect x="25" y="50" width="15" height="8" fill="#ff006e" rx="4" />
+                <rect x="60" y="50" width="15" height="8" fill="#ff006e" rx="4" />
+                <!-- Legs -->
+                <rect x="40" y="75" width="8" height="15" fill="#06ffa5" rx="4" />
+                <rect x="52" y="75" width="8" height="15" fill="#06ffa5" rx="4" />
+                <!-- Eyes -->
+                <circle cx="45" cy="28" r="2" fill="#06ffa5" />
+                <circle cx="55" cy="28" r="2" fill="#06ffa5" />
+            </svg>
+   
+        </div>
+        <h1>Lost in Space!</h1>
+        <p>The page you're looking for has floated away into the cosmic void.</p>
+        <a href="/?name=krushik" class="btn btn-primary link_404">🚀 Go to Home</a>
+        
+    </div>
+
+    <script>
+        // Generate Random Stars
+        function generateStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        generateStars();
+
+        function goHome() {
+            window.location.href = '/';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Add some parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const glows = document.querySelectorAll('.glow');
+            glows.forEach((glow, index) => {
+                const moveX = (e.clientX / window.innerWidth) * 20;
+                const moveY = (e.clientY / window.innerHeight) * 20;
+                glow.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>

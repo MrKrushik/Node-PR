@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antique Treasures - Timeless Collections</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>🏛️ ANTIQUE TREASURES</h1>
+                <p>Timeless Artifacts from Around the World</p>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#collection">Collection</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+
+            <div class="hero-header">
+                <div style="text-align: left;">
+                    <h2 style="font-size: 2rem; margin: 0;"> Antique Collection</h2>
+                    <p class="text-muted" style="margin: 0; color: #b8860b;">Manage your antiques effectively</p>
+                </div>
+                <a href="/addantiquePage" class="add-btn">+ Add New antique</a>
+            </div>
+
+            <div class="main-card">
+                <div class="table-responsive">
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col">antique Item Name</th>
+                                <th scope="col">Antique Age</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Category / Type</th>
+                                <th scope="col">Item image</th>
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% totalantiques.map((antique, index)=> { %>
+                                <tr>
+                                    <td scope="row" class="text-center">
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td class="fw-bold" style="color: #ffd700;">
+                                        <%= antique.antique_name %>
+                                    </td>
+                                    <td>
+                                        <%= antique.antique_age %>
+                                    </td>
+                                    <td style="color: #28a745; font-weight: 600;">
+                                        ₹<%= antique.antique_price %>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border"
+                                            style="padding: 5px;  border-radius: 4px; color:#c0c0c0;">
+                                            <%= antique.antique_category %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <img src="<%= antique.antique_image %>" class="antique-cover"
+                                            alt="antique Image">
+                                    </td>
+
+                                    <td class="text-center">
+                                        <a href="/deleteantique?antiqueId=<%= antique.id %>"
+                                            class="action-btn btn-delete">Delete</a>
+                                        <a href="/editantique/<%= antique.id %>" class="action-btn btn-edit">Edit</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <% if (totalantiques.length===0) { %>
+                    <div class="text-center p-5" style="padding: 2rem;">
+                        <h4 class="text-muted">No antiques found in library.</h4>
+                        <p>Click the button above to add your first antique.</p>
+                    </div>
+                    <% } %>
+
+            </div>
+
+            <!-- <a href="/addantiquePage" class="add-btn" style="display: inline-block; margin-top: 20px;">+ Add New antique</a> -->
+        </section>
+
+        <section class="view-section" id="collection">
+            <h3>📦 Our Premium Collection</h3>
+            <div class="items-grid">
+                <div class="item-card">
+                    <img src="https://valuableantiques.org/wp-content/uploads/2023/05/Old-Clocks-683x1024.jpg"
+                        class="item-image" alt="Jewelry">
+                    <h4>Victorian clocks</h4>
+                    <p>Exquisite pieces from the Victorian era with intricate silver work and gemstones.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://justjudge.in/wp-content/uploads/2023/05/New-Project-2023-05-17T172709.795.png"
+                        class="item-image" alt="antiques">
+                    <h4>Rare antiques Collection</h4>
+                    <p>First editions and hand-bound manuscripts from the 18th and 19th centuries.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://i.etsystatic.com/8475340/r/il/df8ddb/2495461871/il_570xN.2495461871_9ofq.jpg"
+                        class="item-image" alt="Furniture">
+                    <h4>Antique Furniture</h4>
+                    <p>Hand-crafted wooden furniture with ornate carvings and original upholstery.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://d2ma7w4w9grdob.cloudfront.net/media/65936Hand-Painted-Lady-Canvas-Oil-Painting-for-Hanging-1.jpg"
+                        class="item-image" alt="Paintings">
+                    <h4>Oil Paintings</h4>
+                    <p>Original artwork by renowned classical artists from Europe and Asia.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.stockcake.com/public/e/c/1/ec15399a-181f-45e8-807c-c3f04173cd8c_large/vintage-time-collection-stockcake.jpg"
+                        class="item-image" alt="Watches">
+                    <h4>Vintage Timepieces</h4>
+                    <p>Mechanical watches and clocks with Swiss and German precision engineering.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://artlogic-res.cloudinary.com/w_800,c_limit,f_auto,fl_lossy,q_auto:good/ws-samfogg/usr/images/artworks/main_image/items/73/73c04f02df0442069547772d4c3aea43/19986.jpg"
+                        class="item-image" alt="Ceramics">
+                    <h4>Ceramic Artifacts</h4>
+                    <p>Ceramic Artifacts , coins , vas and porcelain from China, Japan, and the Mediterranean.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1657214005798-86b35114fc0b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2xkJTIwY29pbnN8ZW58MHx8MHx8fDA%3D"
+                        class="item-image" alt="Ceramics">
+                    <h4>OLd Coins</h4>
+                    <p>OLd Coins and porcelain from China, India, and the Lorem ipsum dolor sit amet..</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="item-card">
+                    <img src="https://cdn.shopify.com/s/files/1/0637/0164/7619/files/01-dirartonian-ceramic-art.jpg?v=1652688815"
+                        class="item-image" alt="Ceramics">
+                    <h4>Ceramic Artifacts</h4>
+                    <p>Ancient pottery and porcelain from China, Japan, and the Mediterranean.</p>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section" id="contact">
+            <h3>📬 Contact Us</h3>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Heritage Lane, Historic District<br>London, UK</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+44 (0) 20 7946 0958</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@antiquetreasures.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🕐</div>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9AM - 6PM<br>Sat - Sun: 10AM - 5PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Type your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h4>🏛️ Antique Treasures</h4>
+            <p>Preserving History, One Piece at a Time</p>
+            <div class="social-links">
+                <a href="#" title="Faceantique">f</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Antique Treasures. All rights reserved. | Authenticated & Certified Antiques</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Thank you ${name}! Your message has been sent successfully. We will get back to you soon.`);
+            event.target.reset();
+        }
+    </script>
+</body>
+
+</html>
