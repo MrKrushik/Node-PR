@@ -609,9 +609,14 @@ https://github.com/your-username/antique-treasures
 
 ---
 
-## 📜 License
-https://github.com/MrKrushik/License
 ---
+
+## 📄 License
+This project is licensed under the [MIT License](https://github.com/MrKrushik/License).
+
+## 👨‍💻 Author
+Krushik
+
 
 ## 👨‍💻 Author
 
