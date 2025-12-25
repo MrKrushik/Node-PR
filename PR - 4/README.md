@@ -2,7 +2,7 @@
 
 A modern web application for managing and showcasing antique items with a beautiful UI and smooth animations.
 
-![Antique Treasures](/screenshot/web.jpeg)
+![Antique Treasures](./screenshot/web.jpeg)
 
 ---
 
