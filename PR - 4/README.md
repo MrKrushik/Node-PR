@@ -614,7 +614,7 @@ https://github.com/your-username/antique-treasures
 ## 📄 License
 This project is licensed under the [MIT License](https://github.com/MrKrushik/License).
 
-## 👨‍💻 Author
+
 Krushik
 
 
@@ -625,6 +625,7 @@ Krushik
 - Created: 2024
 - Version: 1.0.0
 - Status: Active Development
+- my name -> Krushik
 
 ---
 
