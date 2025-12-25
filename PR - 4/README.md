@@ -2,7 +2,7 @@
 
 A modern web application for managing and showcasing antique items with a beautiful UI and smooth animations.
 
-![Antique Treasures](/images/web.jpeg)
+![Antique Treasures](/screenshot/web.jpeg)
 
 ---
 
@@ -51,7 +51,7 @@ A modern web application for managing and showcasing antique items with a beauti
 ## 📸 Screenshots
 
 ### 1. Home Page
-![Home Page](/images/view%20page.png)
+![Home Page](/screenshot/viewpage.png)
 
 **Features:**
 - Header with navigation
@@ -60,7 +60,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Search and filter capabilities
 
 ### 2. Add Antique Page
-![Add Page](/images/add%20page.png)
+![Add Page](/screenshot/addpage.png)
 
 **Form Fields:**
 - Antique Item Name
@@ -70,7 +70,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Image URL Link
 
 ### 3. Edit Antique Page
-![Edit Page](/images/editpage.png)
+![Edit Page](/screenshot/editpage.png)
 
 **Pre-filled Data:**
 - All fields auto-populated
@@ -78,7 +78,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Save changes button
 
 ### 4. 404 Error Page
-![404 Page](/images/404.jpeg)
+![404 Page](/screenshot/404.jpeg)
 
 **Features:**
 - Animated spaceman
@@ -88,7 +88,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Mouse parallax effect
 
 ### 5. Premium Collection Section
-![Collection](/images/collection.jpeg)
+![Collection](/screenshot/collection.jpeg)
 
 **Displays:**
 - Category cards with images
@@ -97,7 +97,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Responsive grid layout
 
 ### 6. Contact Section
-![Contact](/images/contact.jpeg)
+![Contact](/screenshot/contact.jpeg)
 
 **Includes:**
 - Contact information
