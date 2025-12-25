@@ -610,9 +610,7 @@ https://github.com/your-username/antique-treasures
 ---
 
 ## 📜 License
-
-[This project is open source and available for educational purposes.](https://img.shields.io/badge/Node.js-v12+-green?logo=node.js)
-
+https://github.com/MrKrushik/License
 ---
 
 ## 👨‍💻 Author
