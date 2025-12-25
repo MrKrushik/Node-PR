@@ -70,7 +70,7 @@ A modern web application for managing and showcasing antique items with a beauti
 - Image URL Link
 
 ### 3. Edit Antique Page
-![Edit Page](/images/edit%20page.png)
+![Edit Page](/images/editpage.png)
 
 **Pre-filled Data:**
 - All fields auto-populated
