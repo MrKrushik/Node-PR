@@ -61,7 +61,7 @@
                                         <%= antique.antique_age %>
                                     </td>
                                     <td style="color: #28a745; font-weight: 600;">
-                                        ₹<%= antique.antique_price %>
+                                        ₹<%= Number(antique.antique_price).toLocaleString('en-IN') %>
                                     </td>
                                     <td>
                                         <span class="badge bg-light text-dark border"
