@@ -1,4 +1,4 @@
-# 🛡️ Immortal Heroes of Freedom 🇮🇳
+# 🛡️ Immortal Heroe of Freedom 🇮🇳
 
 A premium full-stack **CRUD web application** built with  
 **Node.js, Express, MongoDB, EJS & Bootstrap 5**  
