@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruit Hero | Immortal Heroes</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/hero.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1>Add Freedom Hero</h1>
+
+        <form action="/hero/addHero" method="POST" enctype="multipart/form-data">
+
+            <div class="mb-4">
+                <label class="form-label">Freedom hero name</label>
+                <input type="text" name="hero_name" class="form-control" placeholder="e.g. Maharana Pratap" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Born (Birth Date)</label>
+                    <input type="date" name="freedom_birth_date" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Martyred (Death Date)</label>
+                    <input type="date" name="freedom_death_date" class="form-control" required>
+                </div>
+            </div>
+
+            <label class="form-label">Gender</label>
+            <div class="option-group">
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="hero_gender" value="Male" id="male" class="form-check-input">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="hero_gender" value="Female" id="female" class="form-check-input">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Hero Image URL</label>
+                <input type="file" name="hero_image" class="form-control">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Warrior Role</label>
+                <select name="hero_role" class="form-select" required>
+                    <option value="">-- Select Role --</option>
+                    <option value="Revolutionary">Revolutionary (क्रांतिकारी)</option>
+                    <option value="Leader">Leader (नेता)</option>
+                    <option value="Warrior">Soldier (सैनिक)</option>
+                    <option value="Poet">Poet (कवि)</option>
+                    <option value="Activist">Activist (सामाजिक कार्यकर्ता)</option>
+                </select>
+
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Legendary Quote</label>
+                <input type="text" name="hero_quote" class="form-control"
+                    placeholder="e.g. Give me blood, I will give you freedom!">
+            </div>
+
+            <button type="submit" class="btn-submit">Add Hero to Legend</button>
+        </form>
+
+        <a href="/hero/allHeroes" class="view-link">
+            - View All Freedom Fighters -
+        </a>
+    </div>
+
+</body>
+
+</html>

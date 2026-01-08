@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immortal Heroes of Freedom</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/hero.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="brand-title">
+                <h1>Immortal Heroes</h1>
+                <p class="text-muted m-0">The Eternal Guardians of Liberty</p>
+            </div>
+            <a href="/hero/" class="btn-add-data">
+                <span style="font-size: 1.4rem;">+</span> Recruit New Hero
+            </a>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="heroSearch" class="search-input" placeholder="Search by name or role...">
+        </div>
+
+        <div class="row g-4" id="heroGrid">
+            <% heroes.map((hero)=> { %>
+                <div class="col-12 col-md-6 col-lg-4 hero-card-item">
+                    <div class="hero-card shadow-lg">
+                        
+                        <div class="image-container">
+                            <% if(hero.hero_image) { %>
+                                <img src="/uploads/<%= hero.hero_image %>" class="hero-img" alt="<%= hero.hero_name %>">
+
+                            <% } else { %>
+                                <div class="hero-img">
+                                    <%= hero.hero_name.charAt(0).toUpperCase() %>
+                                </div>
+                            <% } %>
+                        </div>
+
+                        <span class="emp-name"><%= hero.hero_name %></span>
+                        <span class="emp-role"><%= hero.hero_role %></span>
+
+                        <div class="data-grid">
+                            <div>
+                                <span class="label">Born</span>
+                                <span class="val">
+                                    <%= hero.freedom_birth_date ? new Date(hero.freedom_birth_date).toLocaleDateString('en-IN') : 'N/A' %>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="label">Martyred</span>
+                                <span class="val">
+                                    <%= hero.freedom_death_date ? new Date(hero.freedom_death_date).toLocaleDateString('en-IN') : 'N/A' %>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="label">Gender</span>
+                                <span class="val text-capitalize"><%= hero.hero_gender %></span>
+                            </div>
+                            <div>
+                                <span class="label">Country</span>
+                                <span class="val" style="color: #ffd700;">India</span>
+                            </div>
+                        </div>
+
+                        <div class="quote-box">
+                            <%= hero.hero_quote || "Life is only meaningful when spent in service of others." %>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <a href="/hero/editHero/<%= hero._id %>" class="action-btn edit-link flex-grow-1">Edit Ledger</a>
+                            <a href="/hero/deleteHero?heroId=<%= hero._id %>" class="action-btn delete-link flex-grow-1">Remove</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('heroSearch').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let cards = document.querySelectorAll('.hero-card-item');
+            cards.forEach(card => {
+                let name = card.querySelector('.emp-name').innerText.toLowerCase();
+                let role = card.querySelector('.emp-role').innerText.toLowerCase();
+                if (name.includes(filter) || role.includes(filter)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Hero | Premium</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/hero.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1>Update Hero Data</h1>
+
+        <form method="post" action="/hero/updateHero" enctype="multipart/form-data">
+            <input type="hidden" name="hero_id" value="<%= hero._id %>">
+
+
+            <div class="mb-4">
+                <label class="form-label">Freedom hero name</label>
+                <input type="text" name="hero_name" value="<%= hero.hero_name %>" class="form-control">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Born (Birth Date)</label>
+                    <input type="date" name="freedom_birth_date"
+                        value="<%= hero.freedom_birth_date ? new Date(hero.freedom_birth_date).toISOString().split('T')[0] : '' %>"
+                        class="form-control">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Martyred (Death Date)</label>
+                    <input type="date" name="freedom_death_date"
+                        value="<%= hero.freedom_death_date ? new Date(hero.freedom_death_date).toISOString().split('T')[0] : '' %>"
+                        class="form-control">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Gender</label>
+                <div class="option-group">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="hero_gender" value="Male" <%=hero.hero_gender==='Male' ? 'checked'
+                            : '' %> class="form-check-input" id="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="hero_gender" value="Female" <%=hero.hero_gender==='Female' ? 'checked'
+                            : '' %> class="form-check-input" id="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Hero Image URL</label>
+                <img src="/uploads/<%= hero.hero_image %>" class="hero-img2" alt="<%= hero.hero_name %>">
+                <input type="file" name="hero_image" value="<%= hero.hero_image %>" class="form-control"
+                    placeholder="Paste image link here">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Warrior Role</label>
+                <select class="custom-select" name="hero_role">
+                    <% ["Revolutionary", "Leader" ,"Soldier", "Poet" , "Activist" ].forEach(role=> { %>
+                        <option value="<%= role %>" <%=hero.hero_role===role ? 'selected' : '' %>>
+                            <%= role %>
+                        </option>
+                        <% }) %>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Quote</label>
+                <input type="text" name="hero_quote" value="<%= hero.hero_quote %>" class="form-control"
+                    placeholder="Enter Freedom Hero Quote">
+            </div>
+
+            <button type="submit" class="btn-update">Update Legend</button>
+        </form>
+
+        <a href="/hero/allHeroes" class="back-link">← Cancel and Go Back</a>
+    </div>
+
+</body>
+
+</html>
