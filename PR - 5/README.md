@@ -1,4 +1,4 @@
-# 🛡️ Immortal Heroes of Freedom 🇮🇳
+# 🛡️ Immortal Heroe of Freedom 🇮🇳
 
 A premium full-stack **CRUD web application** built with  
 **Node.js, Express, MongoDB, EJS & Bootstrap 5**  
@@ -157,7 +157,8 @@ Score, fuel & speed system
 Restart race option
 
 📜 License
-MIT License
+##  MIT License
+This project is licensed under the [MIT License](https://github.com/MrKrushik/License).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files...
