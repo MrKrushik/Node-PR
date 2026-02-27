@@ -1,0 +1,172 @@
+<%- include('../header') %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12 grid-margin stretch-card mt-5">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title">Edit Product</h4>
+                            <p class="card-description">Update product details</p>
+
+                            <form class="forms-sample" method="post" action="/product/updateProduct/<%= product._id %>" enctype="multipart/form-data">
+
+                                <div class="row">
+
+                                    <!-- Product Name -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Product Name</label>
+                                            <input type="text" class="form-control" name="product_name" placeholder="Product Name" value="<%= product.product_name %>" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Category -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control" id="category" name="category_id" required>
+                                                <option value="">Select Category</option>
+                                                <% categories.forEach((item)=> { %>
+                                                    <option value="<%= item._id %>" <%= item._id.toString() === product.category_id.toString() ? 'selected' : '' %>>
+                                                        <%= item.category_name %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- SubCategory -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Sub Category</label>
+                                            <select class="form-control" id="subcategory" name="subcategory_id" required>
+                                                <option value="">Select Sub Category</option>
+                                                <% subcategories.forEach((item)=> { %>
+                                                    <option value="<%= item._id %>" <%= item._id.toString() === product.subcategory_id.toString() ? 'selected' : '' %>>
+                                                        <%= item.subcategory_name %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Extra Category -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Extra Category</label>
+                                            <select class="form-control" id="extracategory" name="extracategory_id" required>
+                                                <option value="">Select Extra Category</option>
+                                                <% extracategories.forEach((item)=> { %>
+                                                    <option value="<%= item._id %>" <%= item._id.toString() === product.extra_category_id.toString() ? 'selected' : '' %>>
+                                                        <%= item.extra_category_name %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Old Price -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Old Price</label>
+                                            <input type="number" class="form-control" name="old_price" placeholder="Old Price" value="<%= product.old_price %>" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- New Price -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>New Price</label>
+                                            <input type="number" class="form-control" name="price" placeholder="New Price" value="<%= product.price %>" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stock -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Stock</label>
+                                            <input type="number" class="form-control" name="stock" placeholder="Stock" value="<%= product.stock %>" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control" name="description" rows="4" placeholder="Product Description" required><%= product.description %></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Image -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Product Image</label>
+                                            <input type="file" class="form-control" name="image">
+                                            <% if(product.image) { %>
+                                                <small class="text-muted">Current: <%= product.image %></small>
+                                            <% } %>
+                                        </div>
+                                    </div>
+
+                                    <!-- Buttons -->
+                                    <div class="col-12 text-end">
+                                        <button type="submit" class="btn btn-primary me-2">Update Product</button>
+                                        <button type="reset" class="btn btn-dark">Cancel</button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </div>
+    </div>
+    </div>
+
+    <%- include('../footer') %>
+
+        <script>
+            const allSubCategories = <%- JSON.stringify(subcategories) %>;
+            const allExtraCategories = <%- JSON.stringify(extracategories) %>;
+
+            const subCatSelect = document.getElementById("subcategory");
+            const extraCatSelect = document.getElementById("extracategory");
+
+            document.getElementById("category").addEventListener("change", (e) => {
+                subCatSelect.innerHTML = '<option value="">Select Sub Category</option>';
+
+                const filteredSubCats = allSubCategories.filter((item) => {
+                    return item.category_id === e.target.value;
+                });
+
+                let options = '<option value="">Select Sub Category</option>';
+
+                filteredSubCats.forEach((item) => {
+                    options += `<option value="${item._id}">${item.subcategory_name}</option>`;
+                });
+
+                subCatSelect.innerHTML = options;
+            });
+
+            document.getElementById("subcategory").addEventListener("change", (e) => {
+                extraCatSelect.innerHTML = '<option value="">Select Extra Category</option>';
+
+                const filteredExtraCats = allExtraCategories.filter((item) => {
+                    return item.subcategory_id === e.target.value;
+                });
+
+                let options = '<option value="">Select Extra Category</option>';
+
+                filteredExtraCats.forEach((item) => {
+                    options += `<option value="${item._id}">${item.extra_category_name}</option>`;
+                });
+
+                extraCatSelect.innerHTML = options;
+            });
+        </script>

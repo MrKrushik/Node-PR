@@ -1,0 +1,244 @@
+<%- include('../header') %>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* --- Core Variables --- */
+    :root {
+        --row-bg: #191c24; 
+        --text-primary: #ffffff;
+        --text-secondary: #6c7293;
+        --accent-blue: #435ebe;
+        --accent-red: #ff4b2b;
+    }
+
+    /* --- Customizing the Default Theme Card --- */
+    .custom-dark-card {
+        background-color: #2A3038 !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .card-header-custom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
+    .card-title-custom {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .card-description-custom {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    /* --- Custom Table Styling --- */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        width: 100%;
+        min-width: 800px; /* Ensures table doesn't shrink too much on mobile */
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+
+    .custom-table thead th {
+        border: none;
+        color: var(--text-secondary);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+    }
+
+    .custom-table tbody tr {
+        background-color: var(--row-bg);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .custom-table tbody tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        background-color: #222630;
+    }
+
+    .custom-table td {
+        padding: 15px 20px;
+        vertical-align: middle;
+        border: none;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+    }
+
+    .custom-table td:first-child {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+    .custom-table td:last-child {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    /* --- Image Styling --- */
+    .cat-img-wrapper {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        background: #000; 
+    }
+
+    .cat-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- Badges & Text --- */
+    .serial-badge {
+        background: rgba(67, 94, 190, 0.2);
+        color: #8da2fb;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .cat-name {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    /* --- Action Buttons --- */
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 0.9rem;
+        margin-right: 8px;
+        transition: all 0.2s;
+        text-decoration: none !important;
+    }
+
+    .btn-edit { background: rgba(67, 94, 190, 0.2); color: #6c8aff; }
+    .btn-edit:hover { background: var(--accent-blue); color: #fff; }
+
+    .btn-delete { background: rgba(255, 75, 43, 0.1); color: #ff6b52; }
+    .btn-delete:hover { background: var(--accent-red); color: #fff; }
+
+    button:focus, a:focus, .action-btn:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card custom-dark-card">
+                    <div class="card-body p-4">
+                        
+                        <div class="card-header-custom">
+                            <div>
+                                <h4 class="card-title-custom">Category Management</h4>
+                                <p class="card-description-custom">View and manage your product categories</p>
+                            </div>
+                        
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th width="10%">#No</th>
+                                        <th width="15%">Image</th>
+                                        <th width="50%">Category Name</th>
+                                        <th width="25%">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (allCategory && allCategory.length > 0) { %>
+                                        <% allCategory.forEach((cat, index)=> { %>
+                                            <tr>
+                                                <td>
+                                                    <span class="serial-badge">
+                                                        <%= index + 1 < 10 ? '0'+(index+1) : index+1 %>
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    <div class="cat-img-wrapper">
+                                                        <img src="/<%= cat.category_image %>" alt="Category" class="cat-img" onerror="this.src='https://via.placeholder.com/60'">
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <span class="cat-name"><%= cat.category_name %></span>
+                                                </td>
+
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="/category/editCategory/<%= cat._id %>" class="action-btn btn-edit" title="Edit">
+                                                            <i class="fas fa-pen"></i>
+                                                        </a>
+                                                        
+                                                        <a href="/category/deleteCategory?Id=<%= cat._id %>" 
+                                                           class="action-btn btn-delete" 
+                                                           onclick="return confirm('Are you sure you want to delete this category?')"
+                                                           title="Delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="4" class="text-center py-5">
+                                                <div style="color: var(--text-secondary); opacity: 0.7;">
+                                                    <i class="fas fa-folder-open fa-3x mb-3"></i>
+                                                    <p>No Categories Found</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     </div>
+    </div>
+
+    <%- include('../footer') %>
+</div>
+
+<%- include('../footer') %>

@@ -1,0 +1,60 @@
+<%- include('../header') %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12 grid-margin stretch-card mt-5">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title">Edit SubCategory</h4>
+                            <p class="card-description">Update subcategory details</p>
+
+                           <form class="forms-sample" method="post" action="/subcategory/editSubCategory/<%= subcategory._id %>">
+
+                                <div class="row">
+
+                                    <!-- Parent Category -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Parent Category</label>
+                                            <select class="form-control" name="category_id" required>
+                                                <option value="">Select Category</option>
+                                                <% categories.map((category)=> { %>
+                                                    <option value="<%= category._id %>" <%= category._id.toString() === subcategory.category_id.toString() ? 'selected' : '' %>>
+                                                        <%= category.category_name %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Subcategory Name -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Subcategory Name</label>
+                                            <input type="text" class="form-control" name="subcategory_name" placeholder="Subcategory Name" value="<%= subcategory.subcategory_name %>" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Buttons -->
+                                    <div class="col-12 text-end">
+                                        <button type="submit" class="btn btn-primary me-2">Update SubCategory</button>
+                                        <button type="reset" class="btn btn-dark">Cancel</button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <%- include('../footer') %>

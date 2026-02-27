@@ -1,0 +1,381 @@
+<%- include("../header") %>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* ================= VARIABLES ================= */
+    :root {
+        --primary: #0090e7;
+        --primary-dark: #007ac3;
+        --bg-card: #191c24;
+        --bg-sidebar: #0f1015;
+        --bg-input: #2a3038;
+        --text-white: #ffffff;
+        --text-muted: #6c7293;
+        --border: #2a3038;
+    }
+
+    /* ===== GLOBAL LINK FIX (NO LINE / NO OUTLINE) ===== */
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    a:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    /* ============================================== */
+
+    .profile-container {
+        display: flex;
+        background: var(--bg-card);
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        flex-wrap: wrap;
+    }
+
+    /* ================= SIDEBAR ================= */
+    .profile-sidebar {
+        width: 300px;
+        background-color: var(--bg-sidebar);
+        padding: 40px 30px;
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .profile-sidebar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary);
+    }
+
+    .profile-card {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .image-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px;
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid var(--primary);
+        padding: 3px;
+        background: var(--bg-sidebar);
+    }
+
+    .profile-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 5px;
+    }
+
+    .profile-card p {
+        font-size: 11px;
+        color: var(--primary);
+        font-weight: 600;
+        background: rgba(0, 144, 231, 0.1);
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        text-transform: uppercase;
+    }
+
+    /* Menu */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-radius: 6px;
+        color: var(--text-muted);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .menu-item i {
+        margin-right: 12px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .menu-item:hover {
+        background: var(--bg-input);
+        color: var(--primary);
+    }
+
+    .menu-item.active {
+        background: var(--primary);
+        color: var(--text-white);
+    }
+
+    /* ================= CONTENT AREA ================= */
+    .content-area {
+        flex: 1;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-text {
+        margin-bottom: 25px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-text h2 {
+        font-size: 22px;
+        color: var(--text-white);
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    .header-text span {
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+
+    /* GRID */
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .info-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+    }
+
+    .info-value-box {
+        display: flex;
+        align-items: center;
+        background: var(--bg-input);
+        padding: 10px 15px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        height: 45px;
+    }
+
+    .info-value-box i {
+        font-size: 16px;
+        color: var(--primary);
+        margin-right: 12px;
+    }
+
+    .info-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-white);
+    }
+
+    /* BUTTON */
+    .action-area {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-edit {
+        background-color: var(--primary);
+        color: var(--text-white) !important;
+        padding: 10px 25px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+    }
+
+    .btn-edit:hover {
+        background-color: var(--primary-dark);
+        box-shadow: 0 0 10px rgba(0, 144, 231, 0.4);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+        .profile-sidebar {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-sidebar::before {
+            width: 100%;
+            height: 4px;
+        }
+
+        .profile-card {
+            margin-bottom: 0;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .image-wrapper {
+            width: 60px;
+            height: 60px;
+            margin: 0;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+        <div class="profile-container">
+
+            <!-- SIDEBAR -->
+            <div class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="image-wrapper">
+                        <img src="<%= admin.profile_image %>" alt="Profile">
+                    </div>
+                    <div>
+                        <h3><%= admin.fname %> <%= admin.lname %></h3>
+                        <p>Super Admin</p>
+                    </div>
+                </div>
+
+                <div class="menu">
+                    <a href="#" class="menu-item active">
+                        <i class="fa-regular fa-user"></i> My Profile
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fa-solid fa-shield-halved"></i> Security
+                    </a>
+                    <a href="/logout" class="menu-item">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="content-area">
+                <div class="header-text">
+                    <div>
+                        <h2>My Profile</h2>
+                        <span>Manage your personal details.</span>
+                    </div>
+                    <i class="mdi mdi-account-circle-outline text-muted" style="font-size:28px;"></i>
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <span class="info-label">First Name</span>
+                        <div class="info-value-box">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="info-text"><%= admin.fname %></span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">Last Name</span>
+                        <div class="info-value-box">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="info-text"><%= admin.lname %></span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <div class="info-value-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span class="info-text"><%= admin.email %></span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">Phone</span>
+                        <div class="info-value-box">
+                            <i class="fa-solid fa-phone"></i>
+                            <span class="info-text"><%= admin.phone %></span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">City</span>
+                        <div class="info-value-box">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span class="info-text"><%= admin.city %></span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">Country</span>
+                        <div class="info-value-box">
+                            <i class="fa-solid fa-globe"></i>
+                            <span class="info-text">India</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="action-area">
+                    <a href="/editAdmin/<%= admin.id %>" class="btn-edit">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<%- include("../footer") %>

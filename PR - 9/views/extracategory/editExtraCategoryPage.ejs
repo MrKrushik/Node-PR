@@ -1,0 +1,93 @@
+<%- include('../header') %>
+
+    <div class="col-12 grid-margin stretch-card mt-5">
+        <div class="card ">
+            <div class="card-body ">
+
+                <h4 class="card-title">Edit Extra Category</h4>
+                <p class="card-description">Update extra category details</p>
+
+                <form class="forms-sample " method="post" action="/extracategory/updateExtraCategory/<%= extraCategoryData._id %>">
+
+                    <div class="row  ">
+
+                        <!-- Category -->
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="category_id" id="category" required>
+                                    <option value="">Select Category</option>
+                                    <% categories.map(category=> { %>
+                                        <option value="<%= category._id %>" <%= category._id.toString() === extraCategoryData.category_id.toString() ? 'selected' : '' %>>
+                                            <%= category.category_name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Sub Category -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sub Category</label>
+                                <select class="form-control" name="subcategory_id" id="subcategory" required>
+                                    <option value="">Select Sub Category</option>
+                                    <% subcategories.map(subcategory=> { %>
+                                        <option value="<%= subcategory._id %>" <%= subcategory._id.toString() === extraCategoryData.subcategory_id.toString() ? 'selected' : '' %>>
+                                            <%= subcategory.subcategory_name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Extra Category Name -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Extra Category Name</label>
+                                <input type="text" class="form-control" name="extra_category_name" placeholder="Extra Category Name" value="<%= extraCategoryData.extra_category_name %>" required>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="col-12 text-end">
+                            <button type="submit" class="btn btn-primary me-2">Update Extra Category</button>
+                            <button type="reset" class="btn btn-dark">Cancel</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+    <%- include('../footer') %>
+
+        <script>
+            const allSubCategories = <%- JSON.stringify(subcategories) %>;
+
+            const subCatSelect = document.getElementById("subcategory");
+
+            document.getElementById("category").addEventListener("change", (e) => {
+                console.log("Selected Category:", e.target.value);
+                console.log("All SubCategories:", allSubCategories);
+
+                subCatSelect.innerHTML = '<option value="">Select Sub Category</option>';
+
+                const filteredSubCats = allSubCategories.filter((item) => {
+                    return item.category_id == e.target.value;
+                });
+
+                let options = '<option value="">Select Sub Category</option>';
+
+                filteredSubCats.forEach((item) => {
+                    options += `<option value="${item._id}">${item.subcategory_name}</option>`;
+                });
+
+                subCatSelect.innerHTML = options;
+            });
+        </script>
