@@ -1,0 +1,256 @@
+<%- include('header') %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --card-bg: #2A3038;
+            --card-hover: #323a45;
+            --text-primary: #ffffff;
+            --text-secondary: #aeb7c6;
+            --accent-blue: #435ebe;
+            --accent-red: #ff4b2b;
+        }
+
+        .grid-page {
+            padding: 40px;
+            background-color: #000000;
+        }
+
+        .admin-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            background: var(--card-hover);
+            border-color: rgba(67, 94, 190, 0.3);
+        }
+
+        .card-header-flex {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .admin-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-details h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .admin-email {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 14px;
+            border-radius: 10px;
+            word-break: break-word;
+        }
+
+        .info-item i {
+            color: var(--accent-blue);
+            width: 16px;
+            margin-top: 2px;
+        }
+
+        .info-item span {
+            white-space: normal;
+            line-height: 1.4;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== BUTTON FIX (NO LINE / NO OUTLINE) ===== */
+        .btn-action,
+        .btn-action:hover,
+        .btn-action:focus,
+        .btn-action:active {
+            text-decoration: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .admin-card a {
+            text-decoration: none !important;
+        }
+
+        .admin-card a:focus-visible {
+            outline: none !important;
+        }
+
+        /* ============================================ */
+
+        .btn-action {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background: rgba(67, 94, 190, 0.15);
+            color: #6c8aff;
+        }
+
+        .btn-edit:hover {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-delete {
+            background: rgba(255, 75, 43, 0.1);
+            color: #ff6b52;
+        }
+
+        .btn-delete:hover {
+            background: var(--accent-red);
+            color: #fff;
+        }
+
+        .super-admin-badge {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="grid-page">
+                <div class="row">
+
+                    <% allAdmin.forEach(admin=> { %>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 mb-4">
+                            <div class="admin-card">
+
+                                <!-- HEADER -->
+                                <div class="card-header-flex">
+                                    <img src="<%= admin.profile_image %>" class="admin-img" alt="Profile">
+                                    <div class="admin-details flex-grow-1">
+                                        <h4>
+                                            <%= admin.fname %>
+                                                <%= admin.lname %>
+                                        </h4>
+                                        <span class="admin-email">
+                                            <%= admin.email %>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- INFO -->
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <i class="fas fa-phone-alt"></i>
+                                        <span>
+                                            <%= admin.phone %>
+                                        </span>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <i class="fas fa-venus-mars"></i>
+                                        <span>
+                                            <%= admin.gender %>
+                                        </span>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <i class="fas fa-city"></i>
+                                        <span>
+                                            <%= admin.city %>
+                                        </span>
+                                    </div>
+
+                                    <div class="info-item">
+                                        <i class="fas fa-gamepad"></i>
+                                        <span>
+                                            <%= Array.isArray(admin.hobby) ? admin.hobby.join(", ")
+                                        : (admin.hobby || "") %>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- ACTION -->
+                        <% if(admin.id !==  "695fd79552a7734cce91facd") { %>
+                                                <div class="action-row">
+                                                    <a href="/editAdmin/<%= admin.id %>" class="btn-action btn-edit">
+                                                        <i class="fas fa-pen"></i> Edit
+                                                    </a>
+                                                    <a href="/deleteAdmin?adminId=<%= admin.id %>"
+                                                        class="btn-action btn-delete"
+                                                        onclick="return confirm('Are you sure you want to remove this admin permanently?')">
+                                                        <i class="fas fa-trash-alt"></i> Remove
+                                                    </a>
+                                                </div>
+                                                <% } else { %>
+                                                    <span class="super-admin-badge">
+                                                        <i class="fas fa-crown me-1"></i> SUPER ADMIN (PROTECTED)
+                                                    </span>
+                                                    <% } %>
+
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <%- include('footer') %>
