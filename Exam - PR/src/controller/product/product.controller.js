@@ -49,32 +49,16 @@ module.exports.getAllProducts = async (req, res) => {
 
 module.exports.updateProduct = async (req, res) => {
     try {
-        const product = await productService.getProductById(req.params.id);
-
-        if (!product || product.isDeleted)
-            return res.status(404).json(
-                errorResponse(404, true, MSG.PRODUCT_NOT_FOUND)
-            );
-
-        if (product.userId.toString() !== String(req.user.id))
-            return res.status(403).json(
-                errorResponse(403, true, "Unauthorized")
-            );
-
         const updated = await productService.updateProduct(req.params.id, req.body);
 
-        if (!updated)
-            return res.status(400).json(
-                errorResponse(400, true, "Update failed")
-            );
-
-        return res.status(200).json(
-            successResponse(200, false, MSG.PRODUCT_UPDATED, updated)
-        );
+        return res.status(200).json({
+            message: "Updated",
+            data: updated
+        });
 
     } catch (error) {
-        console.log("Update Error:", error);
-        res.status(500).json(errorResponse(500, true, error.message));
+        console.log(error);
+        res.status(500).json({ error: error.message });
     }
 };
 
