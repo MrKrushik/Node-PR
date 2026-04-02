@@ -3,8 +3,8 @@ module.exports.MSG = {
     // ==============================
     // ADMIN MESSAGES
     // ==============================
-    ADMIN_REGISTRATION_SUCCESS: "Admin registration successfully...",
-    ADMIN_REGISTRATION_FAILED: "Admin registration failed.",
+    ADMIN_REGISTRATION_SUCCESS: "Admin registration successfully",
+    ADMIN_REGISTRATION_FAILED: "Admin registration failed...sorry",
     ADMIN_LOGIN_SUCCESS: "Admin login successful.",
     ADMIN_LOGIN_FAILED: "Invalid admin credentials.",
     ADMIN_INVALID_PASSWORD: "Invalid Password.",
