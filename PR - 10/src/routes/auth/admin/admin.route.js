@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { registerAdmin, loginAdmin, fetchAllAdmins, forgotPassword, verifyOTP, changePassword, deleteAdmin, activeOrInactiveAdmin, adminProfile,  } = require("../../../controllers/auth/admin/admin.controller");
+const { registerAdmin, loginAdmin, fetchAllAdmins, forgotPassword, verifyOTP, changePassword, deleteAdmin, activeOrInactiveAdmin, adminProfile } = require("../../../controllers/auth/admin/admin.controller");
 const { authMiddleware } = require("../../../middleware/auth.middleware");
 
 

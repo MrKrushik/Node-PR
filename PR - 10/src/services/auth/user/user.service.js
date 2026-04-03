@@ -11,7 +11,7 @@ module.exports = class AuthUser{
             return await User.create(body);
         }catch(err){
             console.log("User Registration Error ", err);
-            
+            throw err;
         }
         
     }
@@ -20,8 +20,8 @@ module.exports = class AuthUser{
         try{
             return await User.findOne(body)
         }catch(err){
-            console.log("User Registration Error ", err);
-            
+            console.log("Fetch Single User Error ", err);
+            throw err;
         } 
     }
 
@@ -29,26 +29,26 @@ module.exports = class AuthUser{
         try{
             return await User.find()
         }catch(err){
-            console.log("fetch all User error ", err);
-            
+            console.log("Fetch All User Error ", err);
+            throw err;
         } 
     }
 
     async updateUser(id,body){
         try{
-            return await User.findByIdAndUpdate(id, body, {new:true})
+            return await User.findByIdAndUpdate(id, body, {returnDocument: 'after'})
         }catch(err){
-            console.log("update User error ", err);
-            
+            console.log("Update User Error ", err);
+            throw err;
         } 
     }
 
     async deleteUser(id){
         try{
-            
+            return await User.findByIdAndUpdate(id, {isDelete: true, isActive: false}, {returnDocument: 'after'})
         }catch(err){
             console.log("User delete error ", err);
-            
+            throw err;
         } 
     }
 }

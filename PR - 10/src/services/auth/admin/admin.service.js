@@ -11,7 +11,7 @@ module.exports = class AuthAdmin{
             return await Admin.create(body);
         }catch(err){
             console.log("Admin Registration Error ", err);
-            
+            throw err;
         }
         
     }
@@ -20,8 +20,8 @@ module.exports = class AuthAdmin{
         try{
             return await Admin.findOne(body)
         }catch(err){
-            console.log("Admin Registration Error ", err);
-            
+            console.log("Fetch Single Admin Error ", err);
+            throw err;
         } 
     }
 
@@ -29,26 +29,26 @@ module.exports = class AuthAdmin{
         try{
             return await Admin.find()
         }catch(err){
-            console.log("fetch all admin error ", err);
-            
+            console.log("Fetch All Admin Error ", err);
+            throw err;
         } 
     }
 
     async updateAdmin(id,body){
         try{
-            return await Admin.findByIdAndUpdate(id, body, {new:true})
+            return await Admin.findByIdAndUpdate(id, body, {returnDocument: 'after'})
         }catch(err){
             console.log("update admin error ", err);
-            
+            throw err;
         } 
     }
 
     async deleteAdmin(id){
         try{
-            
+            return await Admin.findByIdAndUpdate(id, {isDelete: true, isActive: false}, {returnDocument: 'after'})
         }catch(err){
-            console.log("admin delete error ", err);
-            
+            console.log("Admin delete error ", err);
+            throw err;
         } 
     }
 }
